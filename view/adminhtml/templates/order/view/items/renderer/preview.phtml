@@ -1,0 +1,36 @@
+<?php
+/**
+ * preview.phtml
+ *
+ * @category Artifi
+ * @package Artifi_Personalize
+ * @author Alexey Poletaev <alexey.poletaev@cyberhull.com>
+ */
+
+/* Adde To Fix Issue - preview for configurable products not working */
+$productCode = $block->getProductSku($block->getItem()->getData('product_id'));
+$sku = $block->getItem()->getSku();
+
+if($sku === $productCode) {
+   $productCode =  $sku;
+   $sku = '';
+}
+?>
+<?php /** @var \Artifi\Personalize\Block\Adminhtml\Order\View\Items\Renderer\Preview $block */ ?>
+<a class="action action-preview"
+   href="#"
+   title="<?php echo $block->escapeHtml(__('Preview personalized design')); ?>"
+   data-mage-init='{
+            "personalizationPreviewButton":{
+                "previewOptions": {
+                    "productCode": "<?php echo $productCode; ?>",
+                    "sku" : "<?php echo $sku; ?>",
+                    "designId": "<?php echo $block->getDesignId() ?>"
+                },
+                "modalOptions": {
+                    "title": "Personalization"
+                }
+            }
+       }'>
+    <span><?php echo __('Preview'); ?></span>
+</a>

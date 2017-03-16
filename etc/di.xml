@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="personalization_persistence" type="Artifi\Personalize\Plugin\Quote\Item\ToOrderItem" sortOrder="10" />
+    </type>
+    <type name="Magento\Catalog\Model\Product\Type\AbstractType">
+        <plugin name="personalization_requirement" type="Artifi\Personalize\Plugin\Product\Type" sortOrder="10" />
+    </type>
+    <type name="Magento\Checkout\Model\Cart">
+        <plugin name="personalization_reorder" type="Artifi\Personalize\Plugin\Cart\ReorderItem" sortOrder="10" />
+    </type>
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="personalization_sanitization" type="Artifi\Personalize\Plugin\Product" sortOrder="10" />
+    </type>
+    <type name="Magento\Sales\Model\Order\CustomerManagement">
+        <plugin name="personalization_ownership" type="Artifi\Personalize\Plugin\Sales\Model\CustomerManagement" sortOrder="10" />
+    </type>
+    <preference for="Artifi\Personalize\Api\DesignRepositoryInterface" type="Artifi\Personalize\Model\DesignRepository"/>
+    <preference for="Artifi\Personalize\Api\OrderItemDesignManagementInterface" type="Artifi\Personalize\Model\OrderItemDesignManagement"/>
+    <preference for="Artifi\Personalize\Api\Data\DesignInterface" type="Artifi\Personalize\Model\Design"/>
+    <preference for="Artifi\Personalize\Api\Data\DesignViewInterface" type="Artifi\Personalize\Model\Design\View"/>
+    <preference for="Artifi\Personalize\Api\Data\DesignViewTextItemInterface" type="Artifi\Personalize\Model\Design\View\Text\Item"/>
+    <preference for="Artifi\Personalize\Api\Data\DesignViewImageItemInterface" type="Artifi\Personalize\Model\Design\View\Image\Item"/>
+    <preference for="Artifi\Personalize\Api\Data\DesignSearchResultInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Magento\Sales\CustomerData\LastOrderedItems" type="Artifi\Personalize\CustomerData\LastOrderedItems" />
+    <preference for="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Image" type="Artifi\Personalize\Block\Customer\Wishlist\Item\Column\Preview" />
+</config>

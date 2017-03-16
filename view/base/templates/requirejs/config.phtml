@@ -1,0 +1,16 @@
+<?php /** @var \Artifi\Personalize\Block\RequireJs\Config $block */ ?>
+<script type="text/javascript">
+    require.config({
+        paths: {
+            'artifi': '<?php echo $block->getArtifiSdkUrl() ?>'
+        },
+        shim: {
+            'artifi': {
+                exports: 'Artifi'
+            }
+        },
+        config: {
+            'Artifi_Personalize/js/config': <?php echo $block->getArtifiJsonConfig() ?>
+        }
+    });
+</script>

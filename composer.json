@@ -1,0 +1,35 @@
+{
+    "name": "artifi/personalize",
+    "description": "Integrates Artifi Product Personalization Engine with Magento 2",
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0",
+        "magento/module-catalog": "100.0.*",
+        "magento/module-catalog-search": "100.0.*",
+        "magento/module-checkout": "100.0.*",
+        "magento/framework": "100.0.*",
+        "magento/module-sales": "100.0.*",
+        "magento/module-wishlist": "100.0.*"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "author": [
+        {
+            "name": "Artifilabs",
+            "email": "anand.garodia@artifilabs.com",
+            "homepage": "http://artifilabs.com/",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Artifi\\Personalize\\": ""
+        }
+    }
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="requirejs_config_artifi"/>
+    <body>
+        <!-- Remove native action "Edit" -->
+        <referenceBlock name="checkout.cart.item.renderers.default.actions.edit" remove="true"/>
+        <referenceBlock name="checkout.cart.item.renderers.simple.actions.edit" remove="true"/>
+        <referenceBlock name="checkout.cart.item.renderers.virtual.actions.edit" remove="true"/>
+        <referenceBlock name="checkout.cart.item.renderers.configurable.actions.edit" remove="true"/>
+
+        <!-- Add action "Preview personalization" -->
+        <referenceBlock name="checkout.cart.item.renderers.default.actions">
+            <block class="Artifi\Personalize\Block\Cart\Item\Renderer\Actions\Generic"
+                   name="checkout.cart.item.renderers.default.actions.preview"
+                   template="Artifi_Personalize::cart/item/renderer/actions/preview.phtml"
+                   before="checkout.cart.item.renderers.default.actions.remove"/>
+        </referenceBlock>
+        <referenceBlock name="checkout.cart.item.renderers.simple.actions">
+            <block class="Artifi\Personalize\Block\Cart\Item\Renderer\Actions\Generic"
+                   name="checkout.cart.item.renderers.simple.actions.preview"
+                   template="Artifi_Personalize::cart/item/renderer/actions/preview.phtml"
+                   before="checkout.cart.item.renderers.simple.actions.remove"/>
+        </referenceBlock>
+        <referenceBlock name="checkout.cart.item.renderers.virtual.actions">
+            <block class="Artifi\Personalize\Block\Cart\Item\Renderer\Actions\Generic"
+                   name="checkout.cart.item.renderers.virtual.actions.preview"
+                   template="Artifi_Personalize::cart/item/renderer/actions/preview.phtml"
+                   before="checkout.cart.item.renderers.virtual.actions.remove"/>
+        </referenceBlock>
+        <referenceBlock name="checkout.cart.item.renderers.configurable.actions">
+            <block class="Artifi\Personalize\Block\Cart\Item\Renderer\Actions\Generic"
+                   name="checkout.cart.item.renderers.configurable.actions.preview"
+                   template="Artifi_Personalize::cart/item/renderer/actions/preview.phtml"
+                   before="checkout.cart.item.renderers.configurable.actions.remove"/>
+        </referenceBlock>
+
+        <!-- Add action "Edit personalization" -->
+        <referenceBlock name="checkout.cart.item.renderers.default.actions">
+            <block class="Artifi\Personalize\Block\Cart\Item\Renderer\Actions\Generic"
+                   name="checkout.cart.item.renderers.default.actions.personalize"
+                   template="Artifi_Personalize::cart/item/renderer/actions/personalize.phtml"
+                   before="checkout.cart.item.renderers.default.actions.remove"/>
+        </referenceBlock>
+        <referenceBlock name="checkout.cart.item.renderers.simple.actions">
+            <block class="Artifi\Personalize\Block\Cart\Item\Renderer\Actions\Generic"
+                   name="checkout.cart.item.renderers.simple.actions.personalize"
+                   template="Artifi_Personalize::cart/item/renderer/actions/personalize.phtml"
+                   before="checkout.cart.item.renderers.simple.actions.remove"/>
+        </referenceBlock>
+        <referenceBlock name="checkout.cart.item.renderers.virtual.actions">
+            <block class="Artifi\Personalize\Block\Cart\Item\Renderer\Actions\Generic"
+                   name="checkout.cart.item.renderers.virtual.actions.personalize"
+                   template="Artifi_Personalize::cart/item/renderer/actions/personalize.phtml"
+                   before="checkout.cart.item.renderers.virtual.actions.remove"/>
+        </referenceBlock>
+        <referenceBlock name="checkout.cart.item.renderers.configurable.actions">
+            <block class="Artifi\Personalize\Block\Cart\Item\Renderer\Actions\Generic"
+                   name="checkout.cart.item.renderers.configurable.actions.personalize"
+                   template="Artifi_Personalize::cart/item/renderer/actions/personalize.phtml"
+                   before="checkout.cart.item.renderers.configurable.actions.remove"/>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,122 @@
+.artifi-container {
+    height: 640px;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .artifi-container {
+        height: 750px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .artifi-container {
+        height: 645px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .artifi-container {
+        height: 635px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .artifi-container {
+        height: 640px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .artifi-container {
+        height: 575px;
+    }
+}
+/*
+    Module :: Artifi_Personalize
+    Created on : Feb 2, 2017, 2:04:45 PM
+    Author     : neeraj.raoot
+*/
+.artifi-container-cls{ height:640px; width:100%;position: relative;}
+
+@media screen and (max-width:768px) {
+    .artifi-container-cls{ height:750px; width:100%}
+}
+
+@media screen and (max-width:640px) {
+    .artifi-container-cls{ height:645px; width:100%}
+}
+
+@media screen and (max-width:480px) {
+    .artifi-container-cls{ height:635px; width:100%}
+}
+
+@media screen and (max-width:360px) {
+    .artifi-container-cls{ height:640px; width:100%}
+}
+
+@media screen and (max-width:320px) {
+    .artifi-container-cls{ height:575px; width:100%}
+}
+.personalize-btn-1 {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.loading-image {
+    height: 79px;
+    margin: auto;
+    width: 200px;
+    z-index: 9999;
+}
+.loading-msg {
+    color: #31bcf0;
+    font-family: inherit;
+    font-size: 15px;
+    margin: 5px auto;
+    text-align: center;
+    width: 100%;
+}
+
+.custom-loader {
+    color: #37c0e2;
+    display: block;
+    height: 100px;
+    left: 50%;
+    margin: -75px 0 0 -45px;
+    min-width: 300px;
+    position: fixed;
+    top: 50%;
+    z-index: 99998;
+    margin: -70px 0 0 -150px;
+}
+
+.artifi-loader-overlay{
+    position: absolute; 
+    z-index: 90000; 
+    top: 0px;
+    left: 0px;
+    width: 100%; 
+    height: 100%; 
+    background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+    opacity: 0.7;
+}
+
+.personalize-button-prod-detail {
+    margin-bottom: 10px; 
+    margin-right: 1%; 
+    width: 49%;
+    vertical-align: top; 
+    font-size: 1.8rem; 
+    line-height: 2.2rem;     
+    padding: 14px 17px;
+    background: #1979c3 none repeat scroll 0 0;     
+    border: 1px solid #1979c3;     
+    box-sizing: border-box;     
+    color: #ffffff;     
+    cursor: pointer;     
+    display: inline-block;     
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    height: 50px;
+    
+}

@@ -1,0 +1,38 @@
+<?php /** @var \Artifi\Personalize\Block\Editor $block */ 
+$porductSkuMapping = '{}';
+
+if ($block->getProduct($block->getProductId())->getData('type_id') === "configurable") {
+    $porductSkuMapping = json_encode($block->getProductSkuMapping(), JSON_FORCE_OBJECT);
+}
+?>
+<div id="artifi_editor" class="artifi-container artifi-container-cls">
+    <!-- HTML Added to add loader on add to cart event -->
+    <div class="custom-loader artifi-loader" style="display:none;" id="dataLoader">
+        <div class="loading-image"></div>
+        <div class="loading-msg">
+            Saving, Please Wait...
+        </div>
+    </div>
+    <div data-overlay="popup_overlaydataLoader artifi-loader" style="display:none;" class="artifi-loader artifi-loader-overlay">
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "#artifi_editor": {
+            "personalizationEditor": {
+                "editorOptions": <?php echo $block->getEditorJsonConfig([
+                    'divId' => 'artifi_editor',
+                    'width' => '100%',
+                    'height' => '100%',
+                ]) ?>,
+                "cartUrl": "<?php echo $block->getCartUrl() ?>",
+                "addToCartUrl": "<?php echo $block->getAddToCartUrl() ?>",
+                "addToCartData": <?php echo $block->getAddToCartJsonConfig() ?>,
+                "updateCartUrl": "<?php echo $block->getUpdateCartUrl() ?>",
+                "porductSkuMapping" : <?php echo $porductSkuMapping; ?>,
+                "product" : <?php echo $block->getProductId(); ?>,
+                "id" : "<?php echo $block->getCartItemId(); ?>"
+            }
+        }
+    }
+</script>

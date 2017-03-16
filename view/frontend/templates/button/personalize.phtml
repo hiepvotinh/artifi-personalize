@@ -1,0 +1,27 @@
+<?php /** @var \Artifi\Personalize\Block\Button $block */ 
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$request = $objectManager->get('\Magento\Framework\App\Request\Http');
+
+$moduleName = $request->getModuleName();
+
+
+?>
+<?php if ($block->canPersonalize()  && !($moduleName === 'checkout')) : ?>
+<button type="button"
+        title="<?php echo $block->escapeHtml(__('Personalize')) ?>"
+        class="action primary personalize personalize-button-prod-detail"
+        data-mage-init='{
+            "personalizationButton": {
+                "editorUrl": "<?php echo $block->getUrl('personalization/editor/popup') ?>",
+                "editorParams": {
+                    "product_id": "<?php echo $block->getProduct()->getId() ?>"
+                },
+                "modalOptions": {
+                    "title": "Personalization"
+                }
+            }
+        }'>
+    <span  style="font-size: 20px;"><?php echo __('Personalize') ?></span>
+</button>
+<?php endif ?>

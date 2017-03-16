@@ -1,0 +1,56 @@
+<?php
+/**
+ * Artitif Template File For Wishlist Item Image
+ */
+// @codingStandardsIgnoreFile
+
+/* @var \Magento\Wishlist\Model\Item $item */
+$item = $block->getItem();
+$product = $item->getProduct();
+$designId = $block->getDesign();
+if ($designId) :
+    ?>
+    <a class="product-item-photo" 
+       href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($item) ?>" 
+       title="<?php echo $block->escapeHtml($product->getName()) ?>"
+       data-mage-init = '{"wishlistImage":{"thumbImage": "<?php echo $block->getFirstThumbnailUrl($designId); ?>"}}'
+       ><?php echo $block->getImage($product, 'wishlist_thumbnail')->toHtml(); ?>
+    </a>
+<?php else: ?>
+    <a class="product-item-photo" href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($item) ?>" title="<?php echo $block->escapeHtml($product->getName()) ?>">
+        <?php echo $block->getImage($product, 'wishlist_thumbnail')->toHtml(); ?>
+    </a>
+<?php endif; ?>
+
+<?php
+if ($product->isVisibleInSiteVisibility() && $designId):
+    $sku = '';
+    $productCode = $block->getItem()->getProduct()->getData('sku');
+    if ($product->getData('type_id') === 'configurable') {
+        $sku = $block->getConfigurableOptionSku();
+        $productCode = $block->getItem()->getProduct()->getData('sku');
+    }
+    ?>
+<p>
+    <a class="action action-preview"
+       href="#"
+       title="<?php echo $block->escapeHtml(__('Preview personalized design')); ?>"
+       data-mage-init='{
+       "personalizationPreviewButton":{
+       "previewOptions": {
+       "sku": "<?php echo $sku; ?>",
+       "productCode": "<?php echo $productCode; ?>",
+       "designId": "<?php echo $designId; ?>"
+       },
+       "modalOptions": {
+       "title": "Personalization"
+       }
+       }
+       }'>
+        <span>
+            <?php echo __('Preview') ?>
+        </span>
+    </a>
+</p>
+    <?php
+ endif ?>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- Update Design Id on edit cart item -->
+    <event name="checkout_cart_product_update_after">
+        <observer name="artifi" instance="Artifi\Personalize\Observer\AddDesignId" shared="false" />
+    </event>
+    <!--  Update Wishlist Item Id to Design Table on Adding item to wishlist -->
+    <event name="wishlist_product_add_after">
+        <observer name="artifi" instance="Artifi\Personalize\Observer\UpdateWishlistItemId" shared="false" />
+    </event>
+    <!--  Update Design Id to cart item moved from wishlist -->
+    <event name="checkout_cart_product_add_after">
+        <observer name="artifi" instance="Artifi\Personalize\Observer\UpdateDesignId" shared="false" />
+    </event>
+</config>

@@ -1,0 +1,16 @@
+<?php /** @var \Artifi\Personalize\Block\Button $block */ 
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$request = $objectManager->get('\Magento\Framework\App\Request\Http');
+
+$moduleName = $request->getModuleName();
+
+?>
+<?php if ($block->canAddToCart() && !($moduleName === 'checkout')) : ?>
+    <button type="submit"
+            title="<?php $block->escapeHtml(__('Add to Cart')) ?>"
+            class="action primary tocart"
+            id="product-addtocart-button">
+        <span><?php echo __('Add to Cart') ?></span>
+    </button>
+<?php endif; ?>

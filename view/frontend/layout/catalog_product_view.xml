@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Artifilabs
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.addtocart">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Artifi_Personalize::addtocart.phtml</argument>
+            </action>
+            <block class="Artifi\Personalize\Block\Button"
+                   name="product.info.addtocart.button.personalize"
+                   template="Artifi_Personalize::button/personalize.phtml"/>
+            <block class="Artifi\Personalize\Block\Button"
+                   name="product.info.addtocart.button.addtocart"
+                   template="Artifi_Personalize::button/addtocart.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

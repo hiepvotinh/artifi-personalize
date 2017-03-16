@@ -1,0 +1,44 @@
+<?php /** @var $block \Artifi\Personalize\Block\Cart\Item\Renderer\Actions\Generic */ ?>
+<?php $design = $block->getDesign(); ?>
+
+
+<?php if ($block->isProductVisibleInSiteVisibility() && $design) : ?>
+
+<?php
+$parentProductId = $block->getParentProductId($block->getProduct()->getId());
+
+?>
+    <a class="action action-edit action-personalize"
+       href="#"
+       title="<?php echo $block->escapeHtml(__('Edit personalized design')); ?>"
+       data-mage-init='{
+            "personalizationButton": {
+                "editorUrl": "<?php echo $block->getUrl('personalization/editor/popup') ?>",
+                "editorParams": {
+                    <?php if( $parentProductId != '0'): ?>
+                    "product_id" : "<?php echo $parentProductId; ?>",
+                    <?php else: ?>
+                    "product_id" : "<?php echo $block->getProduct()->getId(); ?>",
+                    <?php endif; ?>
+                    "sku": "<?php echo $block->getProduct()->getSku() ?>",
+                    "design_id": "<?php echo $design->getId() ?>",
+                    "id": <?php echo $block->getItem()->getId() ?>
+                },
+                "modalOptions": {
+                    "title": "Personalization"
+                }
+            }
+       }'>
+        <span>
+            <?php echo __('Edit') ?>
+        </span>
+    </a>
+<?php elseif($block->isProductVisibleInSiteVisibility()): ?>
+    <a class="action action-edit"
+       href="<?php /* @escapeNotVerified */ echo $block->getConfigureUrl() ?>"
+       title="<?php echo $block->escapeHtml(__('Edit item parameters')); ?>">
+        <span>
+            <?php /* @escapeNotVerified */ echo __('Edit') ?>
+        </span>
+   </a>
+<?php endif; ?>

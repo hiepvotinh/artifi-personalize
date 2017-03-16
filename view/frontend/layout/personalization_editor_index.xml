@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="requirejs_config_artifi"/>
+    <head>
+        <css src="Artifi_Personalize::css/editor.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Artifi\Personalize\Block\Editor"
+                   template="Artifi_Personalize::editor.phtml"
+                   name="personalization.editor"/>
+        </referenceContainer>
+    </body>
+</page>

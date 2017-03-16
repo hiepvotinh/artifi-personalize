@@ -1,0 +1,28 @@
+<?php /** @var \Artifi\Personalize\Block\Checkout\Success\Tracking $block */ ?>
+<?php if ($block->getOrderedDesignIds()) : ?>
+<script type="text/javascript">
+    require([
+        'artifi',
+        'artifiConfig',
+        'domReady!'
+    ], function (Artifi, ArtifiConfig) {
+        
+        if (!ArtifiConfig.isGuest) {
+            Artifi.UpdateUserId({
+                webApiclientKey: ArtifiConfig.webApiclientKey,
+                websiteId: ArtifiConfig.websiteId,
+                oldUserId: '<?php echo $block->getSessionId() ?>',
+                newUserId: ArtifiConfig.userId,
+                isGuest: false
+            });
+        }
+        
+        Artifi.UpdateMultipleCustomizedProductOrderStatus({
+            webApiclientKey: ArtifiConfig.webApiclientKey,
+            websiteId: ArtifiConfig.websiteId,
+            customizedProductIds: '<?php echo implode(',', $block->getOrderedDesignIds()) ?>',
+            orderStatus: Artifi.Constant.orderStatus_Placed
+        });
+    });
+</script>
+<?php endif; ?>

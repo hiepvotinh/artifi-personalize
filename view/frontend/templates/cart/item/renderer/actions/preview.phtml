@@ -1,0 +1,39 @@
+<?php /** @var $block \Artifi\Personalize\Block\Cart\Item\Renderer\Actions\Generic */ ?>
+<?php $design = $block->getDesign(); 
+
+/**
+ * Setting Appropriate Product Code and 
+ * Sku value for configurable ad simple products
+ */
+$productType = $block->getItem()->getData('product_type');
+
+$sku = '';
+$productCode = $block->getProduct()->getSku();
+
+if($productType === 'configurable') {
+    $sku = $block->getProduct()->getSku();
+    $productCode = $block->getItem()->getProduct()->getData('sku');
+}
+
+?>
+<?php if ($block->isProductVisibleInSiteVisibility() && $design) : ?>
+    <a class="action action-preview"
+       href="#"
+       title="<?php echo $block->escapeHtml(__('Preview personalized design')); ?>"
+       data-mage-init='{
+            "personalizationPreviewButton":{
+                "previewOptions": {
+                    "sku": "<?php echo $sku; ?>",
+                    "productCode": "<?php echo $productCode; ?>",
+                    "designId": "<?php echo $design->getId(); ?>"
+                },
+                "modalOptions": {
+                    "title": "Personalization"
+                }
+            }
+       }'>
+        <span>
+            <?php echo __('Preview') ?>
+        </span>
+    </a>
+<?php endif ?>
